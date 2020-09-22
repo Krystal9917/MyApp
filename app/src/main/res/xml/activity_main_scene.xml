@@ -12,6 +12,11 @@
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout"
+            motion:layout_constraintTop_toTopOf="@+id/title" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
