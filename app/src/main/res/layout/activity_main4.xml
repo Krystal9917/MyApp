@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_main_scene"
+    android:layout_margin="20dp"
+    tools:context=".Main2Activity">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter RMB"
+            android:textColorHint="#808080"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="24dp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/input2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:hint="Enter RMB"
+            android:inputType="number"
+            android:textColorHint="#808080"
+            android:textSize="24dp" />
+
+        <EditText
+            android:id="@+id/input3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:hint="Enter RMB"
+            android:inputType="number"
+            android:textColorHint="#808080"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="Save"
+            android:background="#ffa500"/>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

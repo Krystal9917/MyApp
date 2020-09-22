@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_main_scene"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter RMB"
+            android:textColorHint="#808080"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="24dp"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/output"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:hint="0"
+            android:textColorHint="#808080"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="32dp"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="To Dollar"
+            android:background="#5d78d4"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="To Euro"
+            android:background="#5d78d4"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="To Won"
+            android:background="#5d78d4"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="Config"
+            android:background="#ffa500"/>
+
+        <TextView
+            android:id="@+id/realtime"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:textColor="#808080" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
