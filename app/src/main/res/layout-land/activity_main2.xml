@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_main_scene"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="233dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:text="Team A"
+                    android:textAlignment="center"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textSize="32dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#FFD700"
+                        android:text="@string/button3"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#FFD700"
+                        android:text="@string/button4"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#FFD700"
+                        android:text="@string/button5"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:text="Team B"
+                    android:textAlignment="center"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textSize="32dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#FFD700"
+                        android:text="@string/button3"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#FFD700"
+                        android:text="@string/button4"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#FFD700"
+                        android:text="@string/button5"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="88dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="266dp"
+            android:background="#FFD700"
+            android:text="Reset"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
