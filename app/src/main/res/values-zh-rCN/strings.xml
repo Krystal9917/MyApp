@@ -6,5 +6,9 @@
     <string name="button2">取消</string>
     <string name="show">结果：</string>
     <string name="notice">请输入华氏度</string>
+    <string name="button3">+3 分</string>
+    <string name="button4">+2 分</string>
+    <string name="button5">+1 分</string>
+    <string name="button6">重置</string>
 
 </resources>

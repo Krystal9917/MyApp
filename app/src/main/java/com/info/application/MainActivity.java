@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,48 +25,25 @@ public class MainActivity extends AppCompatActivity {
     TextView teamA;
     TextView teamB;
     Button b1,b2,b3,b4,b5,b6,reset;
-    double dollar_rate = 0.15;
-    double euro_rate = 0.13;
-    double won_rate = 171.39;
+    float dollar_rate,euro_rate,won_rate ;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        //获取控件
-//        TextView layout = findViewById(R.id.title);
-//        layout.setText("Set text");
-//        Log.i("tag","msg: say hi");
-//
-//        Button button = findViewById(R.id.button);
-//        button.setOnClickListener(new BtnListener());
-//
-//        input = findViewById(R.id.edit);
-//        output = findViewById(R.id.result);
+        SharedPreferences sharedPreferences = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
 
-//        teamA = findViewById(R.id.textView2);
-//        teamB = findViewById(R.id.textView4);
-//
-//        b1 = findViewById(R.id.button1);
-//        b2 = findViewById(R.id.button2);
-//        b3 = findViewById(R.id.button3);
-//        b4 = findViewById(R.id.button4);
-//        b5 = findViewById(R.id.button5);
-//        b6 = findViewById(R.id.button6);
-//        reset = findViewById(R.id.button7);
-//        b1.setOnClickListener(new BtnListener());
-//        b2.setOnClickListener(new BtnListener());
-//        b3.setOnClickListener(new BtnListener());
-//        b4.setOnClickListener(new BtnListener());
-//        b5.setOnClickListener(new BtnListener());
-//        b6.setOnClickListener(new BtnListener());
-//        reset.setOnClickListener(new BtnListener());
+        PreferenceManager.getDefaultSharedPreferences(this);
+        dollar_rate = sharedPreferences.getFloat("dollar_rate",0.0f);
+        euro_rate = sharedPreferences.getFloat("euro_rate",0.0f);
+        won_rate = sharedPreferences.getFloat("won_rate",0.0f);
 
         rmb_input = findViewById(R.id.input);
         other_output = findViewById(R.id.output);
         real_time_rate = findViewById(R.id.realtime);
-        String realtime_show = "Realtime Rates: $="+dollar_rate+" €="+euro_rate+" ₩="+won_rate;
+        String realtime_show = "Realtime Rates:\n$="+dollar_rate+"\n€="+euro_rate+"\n₩="+won_rate;
         real_time_rate.setText(realtime_show);
         b1 = findViewById(R.id.button1);
         b2 = findViewById(R.id.button2);
@@ -79,15 +59,11 @@ public class MainActivity extends AppCompatActivity {
     class ConfigListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-//            intent.putExtra("dollar_rate",dollar_rate);
-//            intent.putExtra("euro_rate",euro_rate);
-//            intent.putExtra("won_rate",won_rate);
-//            startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
             Bundle bundle = new Bundle();
-            bundle.putDouble("dollar_rate",dollar_rate);
-            bundle.putDouble("euro_rate",euro_rate);
-            bundle.putDouble("won_rate",won_rate);
+            bundle.putFloat("dollar_rate",dollar_rate);
+            bundle.putFloat("euro_rate",euro_rate);
+            bundle.putFloat("won_rate",won_rate);
             intent.putExtras(bundle);
             startActivityForResult(intent,1);
 
@@ -97,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
     class BtnListener implements View.OnClickListener {
         public void onClick(View view) {
-//            int score_A = Integer.parseInt(teamA.getText().toString());
-//            int score_B = Integer.parseInt(teamB.getText().toString());
 
             if(rmb_input.getText().toString().length() == 0){
                 Toast.makeText(MainActivity.this,"Please Enter Value",Toast.LENGTH_SHORT).show();
@@ -140,8 +114,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.item1){
+            Intent intent = new Intent(MainActivity.this, Main0Activity.class);
+            startActivity(intent);
 
         }else if(item.getItemId() == R.id.item2){
+            Intent intent = new Intent(MainActivity.this, Main3Activity.class);
+            startActivity(intent);
 
         }else if(item.getItemId() == R.id.item3){
 
@@ -153,11 +131,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 1 && resultCode == 3){
             Bundle bundle = data.getExtras();
-            dollar_rate = bundle.getDouble("dollar_rate",0.00);
-            euro_rate = bundle.getDouble("euro_rate",0.00);
-            won_rate = bundle.getDouble("won_rate",0.00);
+            dollar_rate = bundle.getFloat("dollar_rate",0.0f);
+            euro_rate = bundle.getFloat("euro_rate",0.0f);
+            won_rate = bundle.getFloat("won_rate",0.0f);
         }
-        String realtime_show = "Realtime Rates: $="+dollar_rate+" €="+euro_rate+" ₩="+won_rate;
+        String realtime_show = "Realtime Rates:\n$="+dollar_rate+"\n€="+euro_rate+"\n₩="+won_rate;
         real_time_rate.setText(realtime_show);
         super.onActivityResult(requestCode, resultCode, data);
     }

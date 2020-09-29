@@ -5,9 +5,9 @@
     <string name="button2">Cancel</string>
     <string name="show">Result:</string>
     <string name="notice">Please Input Fahrenheit</string>
-    <string name="button3">+3 Scores</string>
-    <string name="button4">+2 Scores</string>
-    <string name="button5">+1 Score</string>
+    <string name="button3">+3</string>
+    <string name="button4">+2</string>
+    <string name="button5">+1</string>
     <string name="button6">Reset</string>
 
 </resources>

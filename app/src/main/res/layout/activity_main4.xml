@@ -20,7 +20,7 @@
             android:id="@+id/input1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter RMB"
+            android:hint="Enter Dollar Rate"
             android:textColorHint="#808080"
             android:gravity="center"
             android:layout_margin="10dp"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:hint="Enter RMB"
+            android:hint="Enter Euro Rate"
             android:inputType="number"
             android:textColorHint="#808080"
             android:textSize="24dp" />
@@ -44,11 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:hint="Enter RMB"
+            android:hint="Enter Won rate"
             android:inputType="number"
             android:textColorHint="#808080"
             android:textSize="24dp" />
-
         <Button
             android:id="@+id/button1"
             android:layout_width="188dp"
@@ -57,7 +56,17 @@
             android:layout_gravity="center"
             android:textSize="18dp"
             android:text="Save"
-            android:background="#ffa500"/>
+            android:background="#FFD700"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="Real-Time"
+            android:background="#7B68EE"/>
 
 
 
