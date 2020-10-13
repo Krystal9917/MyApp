@@ -31,6 +31,7 @@ public class Main3Activity extends AppCompatActivity {
     private String TAG = "Thread 1";
     Handler handler;
     Button btn;
+    SharedPreferences sp;
 
     private String inputStream2String(InputStream inputStream) throws IOException {
         final int bufferSize = 1024;
@@ -51,6 +52,7 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+        sp = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
 
         new Thread(new Runnable() {
             @Override
@@ -101,7 +103,7 @@ public class Main3Activity extends AppCompatActivity {
             Log.i("ELEMENTS33", elements33.text());
             float won_rate = 100 / Float.parseFloat(elements33.get(2).text());
 
-            SharedPreferences sp = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
+
             SharedPreferences.Editor editor = sp.edit();
             editor.putFloat("dollar_rate", dollar_rate);
             editor.putFloat("euro_rate", euro_rate);
