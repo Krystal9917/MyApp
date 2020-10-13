@@ -78,6 +78,16 @@
             android:text="List-Test"
             android:background="#DDA0DD"/>
 
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="Grid-Test"
+            android:background="#6DA0DD"/>
+
 
     </LinearLayout>
 

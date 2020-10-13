@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 // TODO Auto-generated method stub
                 message = handler.obtainMessage(1);
-                Log.i("TAGGING","---Task Run---");
+                Log.i("TAGGING", "---Task Run---");
                 handler.sendMessage(message);
             }
         };
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void parser(){
+    public void parser() {
         try {
             Log.i("TAG", "Get HTML Content!");
             String url = "https://www.boc.cn/sourcedb/whpj/";
@@ -195,17 +195,14 @@ public class MainActivity extends AppCompatActivity {
             // 获得美元汇率
             Element element1 = elements.get(27);
             Elements elements11 = element1.getAllElements();
-            Log.i("MainActivity --- Dollar", elements11.text());
             float dollar_rate = 100 / Float.parseFloat(elements11.get(2).text());
             // 获得欧元汇率
             Element element2 = elements.get(8);
             Elements elements22 = element2.getAllElements();
-            Log.i("MainActivity --- Euro", elements22.text());
             float euro_rate = 100 / Float.parseFloat(elements22.get(2).text());
             // 获得韩元汇率
             Element element3 = elements.get(14);
             Elements elements33 = element3.getAllElements();
-            Log.i("MainActivity --- Won", elements33.text());
             float won_rate = 100 / Float.parseFloat(elements33.get(2).text());
 
 

@@ -8,7 +8,7 @@
     android:layout_margin="20dp"
     android:orientation="vertical"
     app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".Main5Activity">
+    tools:context=".Main7Activity">
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -16,20 +16,33 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
         <TextView
-            android:id="@+id/no_data"
+            android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="No Data Now"
-            android:textColor="#000000"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            />
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:text="" />
 
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter RMB and Only Figure"
+            android:text=""
+            android:textColorHint="#123456" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:text="" />
     </LinearLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

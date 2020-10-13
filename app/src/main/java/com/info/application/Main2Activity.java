@@ -28,7 +28,7 @@ import java.net.URL;
 public class Main2Activity extends AppCompatActivity {
     float dollar_rate, euro_rate, won_rate;
     EditText dollar_rate_input, euro_rate_input, won_rate_input;
-    Button btn_save, btn_realtime, btn_list_view;
+    Button btn_save, btn_realtime, btn_list_view, btn_grid_view;
     Handler handler;
 
     @Override
@@ -57,6 +57,18 @@ public class Main2Activity extends AppCompatActivity {
         btn_list_view = findViewById(R.id.button3);
         btn_list_view.setOnClickListener(new ListTestBtnListener());
 
+        btn_grid_view = findViewById(R.id.button4);
+        btn_grid_view.setOnClickListener(new GridTestBtnListener());
+
+    }
+
+    class GridTestBtnListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Main2Activity.this, Main6Activity.class);
+            startActivity(intent);
+        }
     }
 
     class ListTestBtnListener implements View.OnClickListener{
