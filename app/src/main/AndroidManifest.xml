@@ -21,6 +21,7 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".Main0Activity" />
+        <activity android:name=".Main5Activity" />
     </application>
 
 </manifest>

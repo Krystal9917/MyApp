@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +28,7 @@ import java.net.URL;
 public class Main2Activity extends AppCompatActivity {
     float dollar_rate, euro_rate, won_rate;
     EditText dollar_rate_input, euro_rate_input, won_rate_input;
-    Button btn_save, btn_realtime;
+    Button btn_save, btn_realtime, btn_list_view;
     Handler handler;
 
     @Override
@@ -51,6 +53,19 @@ public class Main2Activity extends AppCompatActivity {
 
         btn_realtime = findViewById(R.id.button2);
         btn_realtime.setOnClickListener(new RealtimeBtnListener());
+
+        btn_list_view = findViewById(R.id.button3);
+        btn_list_view.setOnClickListener(new ListTestBtnListener());
+
+    }
+
+    class ListTestBtnListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Main2Activity.this, Main5Activity.class);
+            startActivity(intent);
+        }
     }
 
     class RealtimeBtnListener implements View.OnClickListener {

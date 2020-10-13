@@ -68,6 +68,15 @@
             android:text="Real-Time"
             android:background="#7B68EE"/>
 
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="List-Test"
+            android:background="#DDA0DD"/>
 
 
     </LinearLayout>

@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +21,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class MainActivity extends AppCompatActivity {
     EditText input,rmb_input;
@@ -27,11 +33,39 @@ public class MainActivity extends AppCompatActivity {
     Button b1,b2,b3,b4,b5,b6,reset;
     float dollar_rate,euro_rate,won_rate ;
     SharedPreferences.Editor editor;
+    private final Timer timer = new Timer();
+    private TimerTask task;
+    Main3Activity main3Activity = new Main3Activity();
+    Handler handler;
 
+
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // TODO Auto-generated method stub
+                // 爬取汇率
+                main3Activity.parser();
+                super.handleMessage(msg);
+            }
+        };
+
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
+            }
+        };
+
+        // 单位为毫秒
+        timer.schedule(task,0,24*60*60*1000);
 
         SharedPreferences sharedPreferences = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
 
@@ -53,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         b2.setOnClickListener(new BtnListener());
         b3.setOnClickListener(new BtnListener());
         b4.setOnClickListener(new ConfigListener());
+
+
 
     }
 
@@ -83,19 +119,16 @@ public class MainActivity extends AppCompatActivity {
                 String show = null;
                 switch (view.getId()){
                     case R.id.button1:
-//                    score_A += 3;
                         transfer = rmb * dollar_rate;
                         show = '$'+String.format("%.2f",transfer);
                         break;
                     case R.id.button2:
-//                    score_A += 2;
                         transfer = rmb * euro_rate;
                         show = '€'+String.format("%.2f",transfer);
                         break;
                     case R.id.button3:
                         transfer = rmb * won_rate;
                         show = '₩'+String.format("%.2f",transfer);
-//                    score_A += 1;
                         break;
                     default:
                         break;
