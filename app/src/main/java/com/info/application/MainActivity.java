@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        sharedPreferences = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
 
         handler = new Handler() {
             @Override
@@ -84,10 +83,34 @@ public class MainActivity extends AppCompatActivity {
         // 单位为毫秒
         timer.schedule(task, 0, 24 * 60 * 60 * 1000);
 
-        PreferenceManager.getDefaultSharedPreferences(this);
-        dollar_rate = sharedPreferences.getFloat("dollar_rate", 0.0f);
-        euro_rate = sharedPreferences.getFloat("euro_rate", 0.0f);
-        won_rate = sharedPreferences.getFloat("won_rate", 0.0f);
+        // 原来以读取xml中的数据获得数据
+//        sharedPreferences = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
+//        PreferenceManager.getDefaultSharedPreferences(this);
+//        dollar_rate = sharedPreferences.getFloat("dollar_rate", 0.0f);
+//        euro_rate = sharedPreferences.getFloat("euro_rate", 0.0f);
+//        won_rate = sharedPreferences.getFloat("won_rate", 0.0f);
+
+        // 现在以读取SQLite中的数据获得数据
+        RateManager manager = new RateManager(MainActivity.this);
+        String keys[] = new String[]{"dollar_rate", "euro_rate", "won_rate"};
+        int i;
+        for (i = 0; i < keys.length; i++) {
+            RateItem item = manager.select(keys[i]);
+            float rate = item.getCurRate();
+            switch (i){
+                case 0:
+                    dollar_rate = rate;
+                    break;
+                case 1:
+                    euro_rate = rate;
+                    break;
+                case 2:
+                    won_rate = rate;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         rmb_input = findViewById(R.id.input);
         other_output = findViewById(R.id.output);
@@ -205,16 +228,30 @@ public class MainActivity extends AppCompatActivity {
             Elements elements33 = element3.getAllElements();
             float won_rate = 100 / Float.parseFloat(elements33.get(2).text());
 
+            // 原来以xml形式保存数据
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//            editor.putFloat("dollar_rate", dollar_rate);
+//            editor.putFloat("euro_rate", euro_rate);
+//            editor.putFloat("won_rate", won_rate);
+//            editor.apply();
 
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putFloat("dollar_rate", dollar_rate);
-            editor.putFloat("euro_rate", euro_rate);
-            editor.putFloat("won_rate", won_rate);
-            editor.apply();
+            // 现在以SQLite保存汇率数据 循环存入数据
+            RateManager manager = new RateManager(MainActivity.this);
+            String keys[] = new String[]{"dollar_rate", "euro_rate", "won_rate"};
+            float values[] = new float[]{dollar_rate, euro_rate, won_rate};
+            int i;
+            for (i = 0; i < keys.length; i++) {
+                RateItem item = new RateItem();
+                item.setCurName(keys[i]);
+                item.setCurRate(values[i]);
+                manager.add(item);
+            }
 
             Log.i("DOLLAR", String.valueOf(dollar_rate));
             Log.i("EURO", String.valueOf(euro_rate));
             Log.i("WON", String.valueOf(won_rate));
+
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

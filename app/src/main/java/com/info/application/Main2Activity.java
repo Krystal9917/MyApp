@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class Main2Activity extends AppCompatActivity {
     float dollar_rate, euro_rate, won_rate;
     EditText dollar_rate_input, euro_rate_input, won_rate_input;
@@ -62,7 +63,7 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
-    class GridTestBtnListener implements View.OnClickListener{
+    class GridTestBtnListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
@@ -71,7 +72,7 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-    class ListTestBtnListener implements View.OnClickListener{
+    class ListTestBtnListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
@@ -104,12 +105,25 @@ public class Main2Activity extends AppCompatActivity {
                         Elements elements33 = element3.getAllElements();
                         float won_rate = 100 / Float.parseFloat(elements33.get(2).text());
 
-                        SharedPreferences sp = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sp.edit();
-                        editor.putFloat("dollar_rate", dollar_rate);
-                        editor.putFloat("euro_rate", euro_rate);
-                        editor.putFloat("won_rate", won_rate);
-                        editor.apply();
+                        // 以前以xml文件的形式保存汇率数据
+//                        SharedPreferences sp = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sp.edit();
+//                        editor.putFloat("dollar_rate", dollar_rate);
+//                        editor.putFloat("euro_rate", euro_rate);
+//                        editor.putFloat("won_rate", won_rate);
+//                        editor.apply();
+
+                        // 现在以SQLite保存汇率数据 循环存入数据
+                        RateManager manager = new RateManager(Main2Activity.this);
+                        String keys[] = new String[]{"dollar_rate", "euro_rate", "won_rate"};
+                        float values[] = new float[]{dollar_rate, euro_rate, won_rate};
+                        int i;
+                        for (i = 0; i < keys.length; i++) {
+                            RateItem item = new RateItem();
+                            item.setCurName(keys[i]);
+                            item.setCurRate(values[i]);
+                            manager.add(item);
+                        }
 
                         Log.i("Fetch Rates", dollar_rate + " " + euro_rate + " " + won_rate);
 
@@ -148,32 +162,32 @@ public class Main2Activity extends AppCompatActivity {
     }
 
 
-        class BtnListener implements View.OnClickListener {
+    class BtnListener implements View.OnClickListener {
 
-            @Override
-            public void onClick(View view) {
-                dollar_rate = Float.parseFloat(dollar_rate_input.getText().toString());
-                euro_rate = Float.parseFloat(euro_rate_input.getText().toString());
-                won_rate = Float.parseFloat(won_rate_input.getText().toString());
+        @Override
+        public void onClick(View view) {
+            dollar_rate = Float.parseFloat(dollar_rate_input.getText().toString());
+            euro_rate = Float.parseFloat(euro_rate_input.getText().toString());
+            won_rate = Float.parseFloat(won_rate_input.getText().toString());
 
-                SharedPreferences sp = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putFloat("dollar_rate", dollar_rate);
-                editor.putFloat("euro_rate", euro_rate);
-                editor.putFloat("won_rate", won_rate);
-                editor.apply();
+            SharedPreferences sp = getSharedPreferences("RateFile", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putFloat("dollar_rate", dollar_rate);
+            editor.putFloat("euro_rate", euro_rate);
+            editor.putFloat("won_rate", won_rate);
+            editor.apply();
 
-                Intent intent = getIntent();
-                Bundle bundle = new Bundle();
-                bundle.putFloat("dollar_rate", dollar_rate);
-                bundle.putFloat("euro_rate", euro_rate);
-                bundle.putFloat("won_rate", won_rate);
-                intent.putExtras(bundle);
-                // resultCode用于区别带回数据的数量
-                setResult(3, intent);
-                finish();
+            Intent intent = getIntent();
+            Bundle bundle = new Bundle();
+            bundle.putFloat("dollar_rate", dollar_rate);
+            bundle.putFloat("euro_rate", euro_rate);
+            bundle.putFloat("won_rate", won_rate);
+            intent.putExtras(bundle);
+            // resultCode用于区别带回数据的数量
+            setResult(3, intent);
+            finish();
 
-            }
         }
-
     }
+
+}
