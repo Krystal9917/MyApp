@@ -52,7 +52,7 @@
             android:id="@+id/button1"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="5dp"
             android:layout_gravity="center"
             android:textSize="18dp"
             android:text="Save"
@@ -62,7 +62,7 @@
             android:id="@+id/button2"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="5dp"
             android:layout_gravity="center"
             android:textSize="18dp"
             android:text="Real-Time"
@@ -72,7 +72,7 @@
             android:id="@+id/button3"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="5dp"
             android:layout_gravity="center"
             android:textSize="18dp"
             android:text="List-Test"
@@ -82,11 +82,21 @@
             android:id="@+id/button4"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="5dp"
             android:layout_gravity="center"
             android:textSize="18dp"
             android:text="Grid-Test"
             android:background="#6DA0DD"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:text="Radio-Test"
+            android:background="#9DA0DD"/>
 
 
     </LinearLayout>
